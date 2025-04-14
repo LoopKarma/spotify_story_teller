@@ -346,11 +346,7 @@ struct ContentView: View {
                     
                     
                     // Extract album information
-                    if let item = playback?.item {
-                        // Get the type of item to determine how to extract images
-                        let itemType = String(describing: type(of: item))
-                        print("Current playing item type: \(itemType)")
-                        
+                    if let item = playback?.item {                        
                         // Use reflection or other methods to extract images
                         // This is a workaround for the type casting issues
                         if let json = try? JSONEncoder().encode(item),
@@ -358,9 +354,10 @@ struct ContentView: View {
                             
                             // Extract album info for tracks
                             if let album = dict["album"] as? [String: Any] {
+                                
                                 // Album name
-                                if let name = album["name"] as? String {
-                                    self.albumName = name
+                                if let name = album["name"] as? String, let date = album["release_date"] as? String {
+                                    self.albumName = name + " " + date
                                 }
                                 
                                 // Album art

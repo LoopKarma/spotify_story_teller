@@ -20,5 +20,143 @@
             landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "761095D7-D8EA-4F27-9EA2-E367C9D2FD04"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpotyStoryTeller/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
+            landmarkName = "fetchCurrentPlayback()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A9E717C-F34D-4A3C-83FF-0CD5F0CDE13C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpotyStoryTeller/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
+            landmarkName = "fetchCurrentPlayback()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8A9E717C-F34D-4A3C-83FF-0CD5F0CDE13C - 400b906273905bb4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;SpotifyWebAPI.CurrentlyPlayingContext&gt;) -&gt; () in SpotyStoryTeller.ContentView.fetchCurrentPlayback() -&gt; ()"
+                  moduleName = "SpotyStoryTeller.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/evgenii.molov/projects/my/SpotyStoryTeller/SpotyStoryTeller/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362">
+               </Location>
+               <Location
+                  uuid = "8A9E717C-F34D-4A3C-83FF-0CD5F0CDE13C - 400b906273905bb4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;SpotifyWebAPI.CurrentlyPlayingContext&gt;) -&gt; () in SpotyStoryTeller.ContentView.fetchCurrentPlayback() -&gt; ()"
+                  moduleName = "SpotyStoryTeller.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/evgenii.molov/projects/my/SpotyStoryTeller/SpotyStoryTeller/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362">
+               </Location>
+               <Location
+                  uuid = "8A9E717C-F34D-4A3C-83FF-0CD5F0CDE13C - 400b906273905bb4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;SpotifyWebAPI.CurrentlyPlayingContext&gt;) -&gt; () in SpotyStoryTeller.ContentView.fetchCurrentPlayback() -&gt; ()"
+                  moduleName = "SpotyStoryTeller.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/evgenii.molov/projects/my/SpotyStoryTeller/SpotyStoryTeller/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50F19C67-54A6-414E-A62D-24504042B9E3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpotyStoryTeller/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
+            landmarkName = "fetchCurrentPlayback()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "50F19C67-54A6-414E-A62D-24504042B9E3 - 400b906273905a0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;SpotifyWebAPI.CurrentlyPlayingContext&gt;) -&gt; () in SpotyStoryTeller.ContentView.fetchCurrentPlayback() -&gt; ()"
+                  moduleName = "SpotyStoryTeller.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/evgenii.molov/projects/my/SpotyStoryTeller/SpotyStoryTeller/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "367"
+                  endingLineNumber = "367">
+               </Location>
+               <Location
+                  uuid = "50F19C67-54A6-414E-A62D-24504042B9E3 - 400b906273905a0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;SpotifyWebAPI.CurrentlyPlayingContext&gt;) -&gt; () in SpotyStoryTeller.ContentView.fetchCurrentPlayback() -&gt; ()"
+                  moduleName = "SpotyStoryTeller.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/evgenii.molov/projects/my/SpotyStoryTeller/SpotyStoryTeller/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "367"
+                  endingLineNumber = "367">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "997D2299-834D-4F69-AF2C-F9E558AD5763"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpotyStoryTeller/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "360"
+            endingLineNumber = "360"
+            landmarkName = "fetchCurrentPlayback()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
