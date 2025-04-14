@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		31AFF1DC2DAAFE8100E600D7 /* SpotifyAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 31AFF1DB2DAAFE8100E600D7 /* SpotifyAPI */; };
+		31AFF1E62DAB05E400E600D7 /* NIO in Frameworks */ = {isa = PBXBuildFile; productRef = 31AFF1E52DAB05E400E600D7 /* NIO */; };
+		31AFF1E82DAB05E400E600D7 /* NIOHTTP1 in Frameworks */ = {isa = PBXBuildFile; productRef = 31AFF1E72DAB05E400E600D7 /* NIOHTTP1 */; };
+		31AFF1EB2DAB07D400E600D7 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 31AFF1EA2DAB07D400E600D7 /* Swifter */; };
+		31AFF1EE2DAB0BE500E600D7 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 31AFF1ED2DAB0BE500E600D7 /* OpenAI */; };
+		31AFF1FC2DAD139100E600D7 /* DotEnv in Frameworks */ = {isa = PBXBuildFile; productRef = 31AFF1FB2DAD139100E600D7 /* DotEnv */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		31AFF1BE2DAAFB6900E600D7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +38,22 @@
 		31AFF1C72DAAFB6900E600D7 /* SpotyStoryTellerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotyStoryTellerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		31AFF1E12DAAFF7C00E600D7 /* Exceptions for "SpotyStoryTeller" folder in "SpotyStoryTeller" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 31AFF1AE2DAAFB6800E600D7 /* SpotyStoryTeller */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		31AFF1B12DAAFB6800E600D7 /* SpotyStoryTeller */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				31AFF1E12DAAFF7C00E600D7 /* Exceptions for "SpotyStoryTeller" folder in "SpotyStoryTeller" target */,
+			);
 			path = SpotyStoryTeller;
 			sourceTree = "<group>";
 		};
@@ -52,6 +74,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AFF1EE2DAB0BE500E600D7 /* OpenAI in Frameworks */,
+				31AFF1E82DAB05E400E600D7 /* NIOHTTP1 in Frameworks */,
+				31AFF1FC2DAD139100E600D7 /* DotEnv in Frameworks */,
+				31AFF1DC2DAAFE8100E600D7 /* SpotifyAPI in Frameworks */,
+				31AFF1E62DAB05E400E600D7 /* NIO in Frameworks */,
+				31AFF1EB2DAB07D400E600D7 /* Swifter in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +140,12 @@
 			);
 			name = SpotyStoryTeller;
 			packageProductDependencies = (
+				31AFF1DB2DAAFE8100E600D7 /* SpotifyAPI */,
+				31AFF1E52DAB05E400E600D7 /* NIO */,
+				31AFF1E72DAB05E400E600D7 /* NIOHTTP1 */,
+				31AFF1EA2DAB07D400E600D7 /* Swifter */,
+				31AFF1ED2DAB0BE500E600D7 /* OpenAI */,
+				31AFF1FB2DAD139100E600D7 /* DotEnv */,
 			);
 			productName = SpotyStoryTeller;
 			productReference = 31AFF1AF2DAAFB6800E600D7 /* SpotyStoryTeller.app */;
@@ -195,6 +229,13 @@
 			);
 			mainGroup = 31AFF1A62DAAFB6800E600D7;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				31AFF1DA2DAAFE8100E600D7 /* XCRemoteSwiftPackageReference "SpotifyAPI" */,
+				31AFF1E42DAB05E400E600D7 /* XCRemoteSwiftPackageReference "swift-nio" */,
+				31AFF1E92DAB07D400E600D7 /* XCRemoteSwiftPackageReference "swifter" */,
+				31AFF1EC2DAB0BE500E600D7 /* XCRemoteSwiftPackageReference "OpenAI" */,
+				31AFF1F82DAD102000E600D7 /* XCRemoteSwiftPackageReference "DotEnv" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 31AFF1B02DAAFB6800E600D7 /* Products */;
 			projectDirPath = "";
@@ -398,6 +439,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpotyStoryTeller/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -423,6 +465,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpotyStoryTeller/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -541,6 +584,82 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		31AFF1DA2DAAFE8100E600D7 /* XCRemoteSwiftPackageReference "SpotifyAPI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Peter-Schorn/SpotifyAPI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+		31AFF1E42DAB05E400E600D7 /* XCRemoteSwiftPackageReference "swift-nio" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-nio.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.81.0;
+			};
+		};
+		31AFF1E92DAB07D400E600D7 /* XCRemoteSwiftPackageReference "swifter" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/httpswift/swifter.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+		31AFF1EC2DAB0BE500E600D7 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.9;
+			};
+		};
+		31AFF1F82DAD102000E600D7 /* XCRemoteSwiftPackageReference "DotEnv" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftpackages/DotEnv.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		31AFF1DB2DAAFE8100E600D7 /* SpotifyAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31AFF1DA2DAAFE8100E600D7 /* XCRemoteSwiftPackageReference "SpotifyAPI" */;
+			productName = SpotifyAPI;
+		};
+		31AFF1E52DAB05E400E600D7 /* NIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31AFF1E42DAB05E400E600D7 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIO;
+		};
+		31AFF1E72DAB05E400E600D7 /* NIOHTTP1 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31AFF1E42DAB05E400E600D7 /* XCRemoteSwiftPackageReference "swift-nio" */;
+			productName = NIOHTTP1;
+		};
+		31AFF1EA2DAB07D400E600D7 /* Swifter */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31AFF1E92DAB07D400E600D7 /* XCRemoteSwiftPackageReference "swifter" */;
+			productName = Swifter;
+		};
+		31AFF1ED2DAB0BE500E600D7 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31AFF1EC2DAB0BE500E600D7 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+		31AFF1FB2DAD139100E600D7 /* DotEnv */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31AFF1F82DAD102000E600D7 /* XCRemoteSwiftPackageReference "DotEnv" */;
+			productName = DotEnv;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 31AFF1A72DAAFB6800E600D7 /* Project object */;
 }
