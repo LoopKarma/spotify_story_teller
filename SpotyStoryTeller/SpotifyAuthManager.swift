@@ -23,10 +23,7 @@ class SpotifyAuthManager: ObservableObject {
     @Published var isAuthorized = false
     
     init() {
-        // Check if we already have a valid access token
-        if spotifyAPI.authorizationManager.accessToken != nil {
-            isAuthorized = true
-        }
+        restoreAuthorizationManager()
     }
     
     // Start the authorization process
@@ -128,7 +125,7 @@ class SpotifyAuthManager: ObservableObject {
                 print("Successfully authorized with Spotify")
                 
                 // Save tokens for later use
-                self.saveTokens()
+                self.saveAuthorizationManager()
             }
             
             // Stop the web server as it's no longer needed
@@ -157,4 +154,32 @@ class SpotifyAuthManager: ObservableObject {
             UserDefaults.standard.set(expirationDate, forKey: "spotifyExpirationDate")
         }
     }
+    
+    // Persist the entire authorization manager using Codable
+    private func saveAuthorizationManager() {
+        do {
+            let data = try JSONEncoder().encode(spotifyAPI.authorizationManager)
+            UserDefaults.standard.set(data, forKey: "spotifyAuthManager")
+            print("Saved authorization manager to UserDefaults")
+        } catch {
+            print("Failed to encode authorization manager: \(error)")
+        }
+    }
+
+    
+    private func restoreAuthorizationManager() {
+        guard let data = UserDefaults.standard.data(forKey: "spotifyAuthManager") else {
+            print("No saved authorization manager found")
+            return
+        }
+        do {
+            let manager = try JSONDecoder().decode(AuthorizationCodeFlowManager.self, from: data)
+            spotifyAPI.authorizationManager = manager
+            isAuthorized = manager.accessToken != nil
+            print("Restored authorization manager from UserDefaults")
+        } catch {
+            print("Failed to decode authorization manager: \(error)")
+        }
+    }
+
 }

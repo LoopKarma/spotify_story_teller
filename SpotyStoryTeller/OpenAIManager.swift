@@ -11,23 +11,21 @@ class OpenAIManager {
     func generateTrackInsights(track: String, artist: String, album: String) async throws -> String {
         print(track, artist, album)
         let prompt = """
-        Возьми информацию об этом музыкальном треке \(track) - \(artist) || с альбома: \(album)
+        Find infromation about this music track \(track) - \(artist) \(album), look for the following information: 
 
-        Ты ищешь информацию такой структуры: 
+        1. Song details:
+            What this song is about? 
+            Is there a general topic of the whole album? 
+            Provide full citates to better describe the plot and setting the context.  
+         
+        2. Analyze the musical part, highlight features.
+        3. Analyze the album cover picture.
+        4. Find information about album: 
+            Is there is a story related to writing the song or the album? 
+            Is there an influence of this song or the album? 
+        
 
-        О чем эта песня или альбом? Приведи цитаты текса для полноты описания сюжета или задавания контекста. 
-
-        Пронализируй музыкальную часть песни, какие-то особенности если они есть. 
-
-        Удели внимание обложке альбома. 
-
-        Есть ли история связанная с написанием или выпуском песни или альбома?
-
-        Есть ли видимое влияние этой песни или альбома? 
-
-
-        Приведи дополнительно основную метадату этого трека в конце в виде таблицы. 
-        В конце выведи 3 связанные песни или альбома. 
+        5. Provide up to 3 related songs or albums you suggest to listen after this one.
         """
         
         // Create the message parameters directly as non-optional values

@@ -1,6 +1,7 @@
 import SwiftUI
 import SpotifyWebAPI
 import Combine
+import MarkdownUI
 
 struct ContentView: View {
     // Access the auth manager from the environment
@@ -30,11 +31,6 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            // App header
-            Text("Spotify Controller")
-                .font(.largeTitle)
-                .padding(.top)
-            
             // Display different content based on authentication state
             if authManager.isAuthorized {
                 // User is logged in - show controls
@@ -50,7 +46,7 @@ struct ContentView: View {
             if authManager.isAuthorized {
                 // Fetch current track when view appears
                 fetchCurrentPlayback()
-                
+
                 // Set up timer to refresh every 5 seconds
                 timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
                     fetchCurrentPlayback()
@@ -65,7 +61,7 @@ struct ContentView: View {
         .onChange(of: authManager.isAuthorized) { isAuthorized in
             if isAuthorized {
                 fetchCurrentPlayback()
-                
+
                 // Set up timer to refresh every 5 seconds
                 timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
                     fetchCurrentPlayback()
@@ -80,157 +76,169 @@ struct ContentView: View {
     // View shown when user is connected to Spotify
     var connectedView: some View {
         VStack(spacing: 20) {
-            HStack {
-                Text("Connected to Spotify")
-                    .font(.headline)
-                    .foregroundColor(.green)
-
-            }
-            
-            // Track information section
-            VStack(spacing: 10) {
-                if let currentTrack = currentTrack, let item = currentTrack.item {
-                    // Album artwork if available
-                    if let albumArtURL = albumArtURL {
-                        AsyncImage(url: albumArtURL) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                                    .frame(width: 120, height: 120)
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 120, height: 120)
-                                    .cornerRadius(6)
-                            case .failure:
-                                Image(systemName: "music.note")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 60, height: 60)
-                                    .padding(30)
-                            @unknown default:
-                                EmptyView()
-                            }
-                        }
-                        .padding(.bottom, 5)
-                    } else {
-                        Image(systemName: "music.note")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 60, height: 60)
-                            .padding(30)
-                    }
-                    
-                    // Track title
-                    Text(item.name!)
-                        .font(.headline)
-                        .multilineTextAlignment(.center)
-                    
-                    // Artist name - Extract from the JSON data we already have
-                    if let artistsString = extractArtistsString(from: item) {
-                        Text(artistsString)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
-                    
-                    // Album name
-                    if !albumName.isEmpty {
-                        Text(albumName)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                    
-                    // Additional track details
-                    HStack(spacing: 15) {
-                        // Duration
-                        if let durationMs = item.durationMS {
-                            Label(formatDuration(durationMs), systemImage: "clock")
-                                .font(.caption)
-                        }
-                        
-                    }
-                    .padding(.top, 2)
-                    
-                    // Add AI Insights section
-                    Divider()
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        HStack {
-                            Text("AI Insights")
-                                .font(.headline)
-                            
-                            if isLoadingInsights {
-                                ProgressView()
-                                    .padding(.leading, 5)
-                            } else {
-                                Button(action: {
-                                    if let artistsString = extractArtistsString(from: item) {
-                                        generateInsights(track: item.name!, artist: artistsString, album: albumName)
-                                    }
-                                }) {
-                                    Image(systemName: "arrow.clockwise")
+            HStack(alignment: .top, spacing: 20) {
+                VStack(spacing: 10) {
+                    if let currentTrack = currentTrack, let item = currentTrack.item {
+                        // Album artwork if available
+                        if let albumArtURL = albumArtURL {
+                            AsyncImage(url: albumArtURL) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                        .frame(width: 120, height: 120)
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 200, height: 200)
+                                        .cornerRadius(6)
+                                case .failure:
+                                    Image(systemName: "music.note")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 60, height: 60)
+                                        .padding(30)
+                                @unknown default:
+                                    EmptyView()
                                 }
-                                .buttonStyle(.plain)
+                            }
+                            .padding(.bottom, 5)
+                        } else {
+                            Image(systemName: "music.note")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 60, height: 60)
+                                .padding(30)
+                        }
+
+                        // Track title
+                        Text(item.name!)
+                            .font(.headline)
+                            .multilineTextAlignment(.center)
+
+                        // Artist name - Extract from the JSON data we already have
+                        if let artistsString = extractArtistsString(from: item) {
+                            Text(artistsString)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
+
+                        // Album name
+                        if !albumName.isEmpty {
+                            Text(albumName)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+
+                        // Additional track details
+                        HStack(spacing: 15) {
+                            // Duration
+                            if let durationMs = item.durationMS {
+                                Label(formatDuration(durationMs), systemImage: "clock")
+                                    .font(.caption)
                             }
                         }
-                        
-                        ScrollView {
-                            Text(trackInsights.isEmpty ? "Click the refresh button to get AI insights about this track." : trackInsights)
-                                .font(.body)
-                                .padding(.vertical, 5)
+                        .padding(.top, 2)
+                    } else {
+                        Text("No track currently playing")
+                            .foregroundColor(.secondary)
+                            .padding()
+                    }
+                }
+                .frame(maxWidth: 200, alignment: .leading)
+                .layoutPriority(1)
+                // Insights section
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack {
+                        Text("Song Insights")
+                            .font(.headline)
+
+                        if isLoadingInsights {
+                            ProgressView()
+                                .padding(.leading, 5)
+                        } else {
+                            Button(action: {
+                                if let currentTrack = currentTrack, let item = currentTrack.item,
+                                   let artistsString = extractArtistsString(from: item) {
+                                    generateInsights(track: item.name!, artist: artistsString, album: albumName)
+                                }
+                            }) {
+                                Image(systemName: "arrow.clockwise")
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .frame(maxHeight: 150)
+                    }
+
+                    ScrollView {
+                        Markdown(.init(trackInsights.isEmpty
+                            ? "Click the refresh button to get AI insights about this track."
+                            : trackInsights))
+                        .font(.body)
+                        .padding(.vertical, 5)
+                        
+                    }
+                    .frame(maxHeight: 400)
+                }
+                .font(.body)
+                .padding(.vertical, 5)
+                .padding(.horizontal, 10)
+                .multilineTextAlignment(.leading)
+                .textSelection(.enabled)
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(8)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .layoutPriority(1)
+            }
+            .frame(maxWidth: .infinity)
+            
+                
+
+                
+
+            // Controls section with gray background
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.gray.opacity(0.1))
+                .overlay(
+                    VStack(spacing: 10) {
+                        HStack(spacing: 30) {
+                            Button(action: { skipToPrevious() }) {
+                                Image(systemName: "backward.fill").font(.title)
+                            }
+                            Button(action: { togglePlayPause() }) {
+                                Image(systemName: isPlaying ? "pause.fill" : "play.fill").font(.title)
+                            }
+                            Button(action: { skipToNext() }) {
+                                Image(systemName: "forward.fill").font(.title)
+                            }
+                        }
+                        .padding()
+
+                        HStack {
+                            Image(systemName: "speaker.fill")
+                            Slider(value: $volume, in: 0...1, onEditingChanged: { editing in
+                                if !editing {
+                                    setVolume(volume: Int(volume * 100))
+                                }
+                            })
+                            Image(systemName: "speaker.wave.3.fill")
+                        }
+                        .padding(.horizontal)
                     }
                     .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(8)
-                    .padding(.horizontal)
-                    
-                } else {
-                    Text("No track currently playing")
-                        .foregroundColor(.secondary)
-                        .padding()
-                }
-            }
-            .padding()
-            
-            // Player controls
-            HStack(spacing: 30) {
-                Button(action: {
-                    skipToPrevious()
-                }) {
-                    Image(systemName: "backward.fill")
-                        .font(.title)
-                }
-                
-                Button(action: {
-                    togglePlayPause()
-                }) {
-                    Image(systemName: isPlaying ? "pause.fill" : "play.fill")
-                        .font(.title)
-                }
-                
-                Button(action: {
-                    skipToNext()
-                }) {
-                    Image(systemName: "forward.fill")
-                        .font(.title)
-                }
-            }
-            .padding()
-            
-            // Volume slider
+                )
+                .frame(height: 120)
+
+            // Bottom right connection info and logout
             HStack {
-                Image(systemName: "speaker.fill")
-                Slider(value: $volume, in: 0...1, onEditingChanged: { editing in
-                    if !editing {
-                        setVolume(volume: Int(volume * 100))
-                    }
-                })
-                Image(systemName: "speaker.wave.3.fill")
+                Spacer()
+                Text("Connected to Spotify")
+                    .foregroundColor(.green)
+                Button("Logout") {
+                    self.authManager.authorize()
+                    
+                }
+                .padding(.leading, 10)
             }
-            .padding(.horizontal)
         }
         .padding()
     }
@@ -281,11 +289,16 @@ struct ContentView: View {
         return nil
     }
     
-    // Generate AI insights
+    // Generate AI insights with caching using DatabaseManager
     private func generateInsights(track: String, artist: String, album: String) {
+        if let cached = DatabaseManager.shared.loadInsight(track: track, artist: artist, album: album) {
+            self.trackInsights = cached
+            return
+        }
+
         isLoadingInsights = true
         trackInsights = "Generating insights..."
-        
+
         Task {
             do {
                 let insight = try await openAIManager.generateTrackInsights(
@@ -293,10 +306,11 @@ struct ContentView: View {
                     artist: artist,
                     album: album
                 )
-                
+
                 DispatchQueue.main.async {
                     self.trackInsights = insight
                     self.isLoadingInsights = false
+                    DatabaseManager.shared.saveInsight(track: track, artist: artist, album: album, insight: insight)
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -330,11 +344,20 @@ struct ContentView: View {
                         
                         // Auto-fetch insights for the new track
                         if let artistsString = self.extractArtistsString(from: newItem) {
+                            let album: String
+                            if let albumDict = try? JSONSerialization.jsonObject(with: JSONEncoder().encode(newItem)) as? [String: Any],
+                               let albumInfo = albumDict["album"] as? [String: Any],
+                               let name = albumInfo["name"] as? String,
+                               let date = albumInfo["release_date"] as? String {
+                                album = "from the album '\(name)' (\(date))"
+                            } else {
+                                album = ""
+                            }
                             // Automatically generate insights when track changes
                             self.generateInsights(
                                 track: newItem.name!,
                                 artist: artistsString,
-                                album: self.albumName.isEmpty ? "Unknown Album" : self.albumName
+                                album: album,
                             )
                         }
                     }
@@ -346,7 +369,7 @@ struct ContentView: View {
                     
                     
                     // Extract album information
-                    if let item = playback?.item {                        
+                    if let item = playback?.item {
                         // Use reflection or other methods to extract images
                         // This is a workaround for the type casting issues
                         if let json = try? JSONEncoder().encode(item),

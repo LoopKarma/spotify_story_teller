@@ -13,6 +13,8 @@
 		31AFF1EB2DAB07D400E600D7 /* Swifter in Frameworks */ = {isa = PBXBuildFile; productRef = 31AFF1EA2DAB07D400E600D7 /* Swifter */; };
 		31AFF1EE2DAB0BE500E600D7 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 31AFF1ED2DAB0BE500E600D7 /* OpenAI */; };
 		31AFF1FC2DAD139100E600D7 /* DotEnv in Frameworks */ = {isa = PBXBuildFile; productRef = 31AFF1FB2DAD139100E600D7 /* DotEnv */; };
+		31DD08462DB7B2D50026B186 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 31DD08452DB7B2D50026B186 /* MarkdownUI */; };
+		31DD08492DB7B8180026B186 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 31DD08482DB7B8180026B186 /* SQLite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31DD08492DB7B8180026B186 /* SQLite in Frameworks */,
 				31AFF1EE2DAB0BE500E600D7 /* OpenAI in Frameworks */,
+				31DD08462DB7B2D50026B186 /* MarkdownUI in Frameworks */,
 				31AFF1E82DAB05E400E600D7 /* NIOHTTP1 in Frameworks */,
 				31AFF1FC2DAD139100E600D7 /* DotEnv in Frameworks */,
 				31AFF1DC2DAAFE8100E600D7 /* SpotifyAPI in Frameworks */,
@@ -146,6 +150,8 @@
 				31AFF1EA2DAB07D400E600D7 /* Swifter */,
 				31AFF1ED2DAB0BE500E600D7 /* OpenAI */,
 				31AFF1FB2DAD139100E600D7 /* DotEnv */,
+				31DD08452DB7B2D50026B186 /* MarkdownUI */,
+				31DD08482DB7B8180026B186 /* SQLite */,
 			);
 			productName = SpotyStoryTeller;
 			productReference = 31AFF1AF2DAAFB6800E600D7 /* SpotyStoryTeller.app */;
@@ -235,6 +241,8 @@
 				31AFF1E92DAB07D400E600D7 /* XCRemoteSwiftPackageReference "swifter" */,
 				31AFF1EC2DAB0BE500E600D7 /* XCRemoteSwiftPackageReference "OpenAI" */,
 				31AFF1F82DAD102000E600D7 /* XCRemoteSwiftPackageReference "DotEnv" */,
+				31DD08442DB7B2D50026B186 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
+				31DD08472DB7B8180026B186 /* XCRemoteSwiftPackageReference "SQLite" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 31AFF1B02DAAFB6800E600D7 /* Products */;
@@ -626,6 +634,22 @@
 				kind = branch;
 			};
 		};
+		31DD08442DB7B2D50026B186 /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.1;
+			};
+		};
+		31DD08472DB7B8180026B186 /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.15.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -658,6 +682,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 31AFF1F82DAD102000E600D7 /* XCRemoteSwiftPackageReference "DotEnv" */;
 			productName = DotEnv;
+		};
+		31DD08452DB7B2D50026B186 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31DD08442DB7B2D50026B186 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
+			productName = MarkdownUI;
+		};
+		31DD08482DB7B8180026B186 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 31DD08472DB7B8180026B186 /* XCRemoteSwiftPackageReference "SQLite" */;
+			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
